@@ -1,0 +1,15 @@
+a{
+    color: white;
+    text-decoration:none;
+}
+a:hover{
+    color: blue;
+    cursor:pointer;
+}
+html,body,form{width:100%;height:100%;margin:0;padding:0;}
+body {
+    height: 100%;
+    color: #222222;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+    -webkit-text-size-adjust: none;
+}

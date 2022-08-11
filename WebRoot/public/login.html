@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery.idcode.css">
+    <script type="application/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="js/jquery.cookie.js"></script>
+    <script type="application/javascript" src="js/login.js"></script>
+    
+    
+    <!--//引用idcode插件-->
+    <script src="js/jquery.idcode.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.idcode.setCode();   //加载生成验证码方法
+          
+        });
+
+    </script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>云南大学校友平台</title>
+</head>
+<body ng-app="myapp">
+    <div id="topHeader" style="position: relative">
+        <img src="img/yunlogo.png"/>
+    </div>
+    <div class="mainContent">
+        <div class="login_style">
+            <div class="login_style_top">
+                <div class="login_style_top_img">
+                    <img src="img/login.png">
+                </div>
+            </div>
+            <div class="login_style_content">
+                <div class="login_style_content_l">
+                    <h4>学院最新新闻</h4>
+                    <ul>
+                        <li><h4>资环学院2016年优秀毕业论文</h4> </li>
+                        <li><h4>2017年资环学院接收推荐免试攻读硕士学... </h4> </li>
+                        <li><h4>资环学院2016年优秀毕业论文</h4> </li>
+                    </ul>
+                </div>
+                <div class="login_style_content_r">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="username" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="userpassword" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="userpassword" placeholder="密码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checknum" class="col-sm-2 control-label">验证码</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control col-sm-7"  id ="checknum"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <span id="idcode"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="checkRem"> 记住我(在公共场合不要勾选此项)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <button type="button" class="btn btn-success btn-block" id="loginbtn">登录</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="button" id="btnBackToReg" class="btn btn-default btn-block">注册</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_content">
+            <p>
+                Copyright © 2009 云南大学资源环境与地球科学学院 地址：云南大学呈贡校区，资源环境与地球科学学院
+            </p>
+           <div class="lianxi_style">
+                    电话：0871-65033733 邮箱:645495161@qq.com
+           </div>
+        </div>
+
+    </div>
+<!-- 模态对话框 -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="infoModal" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">提示信息</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+         <h4>验证码错误</h4>
+        </div>
+      
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="infoModal2" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">提示信息</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+         <h4>登录失败</h4>
+        </div>
+      
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="infoModal3" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">提示信息</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+         <h4>登录成功</h4>
+        </div>
+      
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+
+</html>

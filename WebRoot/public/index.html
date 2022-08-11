@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>校友平台</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" type="text/css" href="css/AeroWindow.css?r=123" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.pageslide.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/easydialog.css"/>
+   <link rel="stylesheet" type="text/css" href="css/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="css/build.css"/>
+    
+    <script type="application/javascript" src="js/jquery-1.7.2.min.js"></script>
+    
+	<script type="application/javascript" src="js/bootstrap.min.js"></script>
+	<script type="application/javascript" src="js/distpicker.data.min.js"></script>
+	<script type="application/javascript" src="js/distpicker.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/easydialog.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=58OTPDKo3sklnph55tzHgEVQHLRxGke0"></script>
+    
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+</head>
+
+
+
+<body ng-app="myapp" ng-controller="indexController">
+    <div id="topHeader">
+        <img src="img/yunlogo.png"/>
+    </div>
+
+    <div class="people_info" ng-if="userLoginFlag==true">
+        <div class="people_info_style">
+            <img src="img/people.png">
+        </div>
+        <div class="people_xx_info">
+                                        校友名：{{usersubname}}</br>
+             <a href="">详细信息</a>
+             <a ng-click="loginOut()">登出</a>	
+        </div>
+    </div>
+    <div class="people_loginandregister" ng-if="userLoginFlag==false">
+        <div class="login">
+            <a href={{loginURL}}>登录</a>
+        </div>
+        <div class="xiexian">|</div>
+        <div class="register">
+            <a href="{{registerURL}}">注册</a>
+        </div>
+    </div>
+<div id="content">
+    <div id="allmap"></div>
+    <!--导航栏-->
+    <div class="navTool">
+        <div class="navTool_style" id="people_search">
+            <img class="navTool_img_style" src="img/tool4.png"/>
+            <p>校友查询</p>
+        </div>
+
+        <div class="navTool_style">
+            <img class="navTool_img_style" src="img/tool4.png"/>
+            <p>图表显示</p>
+        </div>
+
+        <div class="navTool_style">
+            <img class="navTool_img_style" src="img/tool4.png"/>
+            <p>空间分析</p>
+        </div>
+
+        <div class="navTool_style">
+            <img class="navTool_img_style" src="img/tool4.png"/>
+            <p>校友查询</p>
+        </div>
+
+    </div>
+</div>
+
+<!--用户查询的功能选择-->
+<div class="easyDialog_wrapper" id="easyDialogWrapper" >
+  <div class="easyDialog_content">
+    <h4 class="easyDialog_title" id="easyDialogTitle">
+      <a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">&times;</a>
+    校友查询
+    </h4>
+    <div class="easyDialog_text"> 
+    <div class="form-group">
+    	<div class=" col-sm-4 checkbox checkbox-success" style="margin-top:0px">
+		          <input type="radio" name="radioSelect" id="radiocounty" value="1" checked>
+		          <label for="radiocounty">
+		              		县级尺度查询
+		          </label>
+		 </div>
+		 <div class=" col-sm-4 checkbox checkbox-success" style="margin-top:0px">
+		           <input type="radio" name="radioSelect" id="radiocity" value="2">
+		           <label for="radiocity">
+		                	市级尺度查询
+		           </label>
+		  </div>
+		  <div class=" col-sm-4 checkbox checkbox-success" style="margin-top:0px">
+		           <input type="radio" name="radioSelect" id="radioprovince" value="3">
+		           <label for="radioprovince">
+		                 	省级尺度查询
+		  		   </label>
+		  </div>
+    </div>
+    <div class="form-group">
+    	<div data-toggle="distpicker">
+              <div class="col-sm-4">
+                   <select data-province="云南省" id="province" class="form-control"></select>
+              </div>
+              <div class="col-sm-4">
+                    <select data-city="昆明市" id="city" class="form-control"></select>
+              </div>
+              <div class="col-sm-4">
+                     <select data-district="呈贡区" id="county" class="form-control"></select>
+              </div>
+         </div>
+		</div>
+	</div>
+	<div class="form-froup" style="margin-top:100px">
+		查询结果:该地区校友人数为:<span id="searchPeopleResult"></span>&nbsp;人
+	</div>
+    <div class="easyDialog_footer">
+      <button class="btn_normal" id="easyDialogNoBtn">关闭</button>
+      <button class="btn_highlight" id="search_btn1">确定搜索</button>
+    </div>
+    
+  </div>
+</div>
+
+   
+
+<script type="text/javascript" src="js/jquery-ui-1.8.1.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery-AeroWindow.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/angular.route.min.js"></script>
+<script type="text/javascript" src="js/xyh_app.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+        $(".people_info:first").mouseenter(function(){
+            $(".people_xx_info:first").slideDown("fast");
+        });
+        $(".people_info:first").mouseleave(function(){
+            $(".people_xx_info:first").slideUp("fast");
+        });
+        $('#people_search').click(function() {
+            easyDialog.open({
+				container : 'easyDialogWrapper',
+			fixed : false,
+			overlay:false
+			});
+         });
+        $("#easyDialogNoBtn").click(function(){
+        	easyDialog.close();
+        });
+        $("#closeBtn").click(function(){
+        	easyDialog.close();
+        });
+        //查询尺度选择
+        $(":radio[name='radioSelect']").click(function(){
+		if($(":radio[name='radioSelect']:checked").val()==1)
+		{
+			$("#province").attr("disabled", false);
+			$("#city").attr("disabled", false);
+			$("#county").attr("disabled", false);
+		}else if($(":radio[name='radioSelect']:checked").val()==2){
+			$("#province").attr("disabled", false);
+			$("#city").attr("disabled", false);
+			$("#county").attr("disabled", true);
+		}else{
+			$("#province").attr("disabled", false);
+			$("#city").attr("disabled", true);
+			$("#county").attr("disabled", true);
+		}
+	 });
+	 
+        $("#search_btn1").click(function(){
+        	var address;
+        	var province;
+        	var city;
+        	var county;
+        	var selectoption=$(":radio[name='radioSelect']:checked").val();
+        	if(selectoption==1)
+        	{
+        		province=$("#province").val();
+    			city=$("#city").val();
+    			county=$("#county").val();
+        	}else if(selectoption==2)
+        	{
+        		province=$("#province").val();
+    			city=$("#city").val();
+    			county="";
+        	}else{
+        		province=$("#province").val();
+    			city="";
+    			county="";
+        	}
+    		address=province+city+county;
+    		//
+    		map.clearOverlays();        //清除地图覆盖物   
+    		getBoundary(address);
+    		$.ajax({ url: "/YNU_XYPT/people/QueryPeopleByPosition.do",
+    		data:{peopleLocation:address,
+    				queryRank:selectoption
+    		},
+    		dataType:"json",
+    		type:"post",
+    		success: function(data){
+    			var count=data.length;
+    			for(var i=0;i<count;i++)
+    			{
+    				addMarkerByPeopleInfo(data[i].subname,data[i].major,data[i].clearAddress,data[i].longitude,data[i].latitude);
+    			}
+    			$("#searchPeopleResult").html("<span><strong>"+count+"</strong></span>");
+    	    }
+          });
+    		
+    		
+    		
+        });
+   
+        
+        // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+    map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    function getBoundary(addressName){
+		var bdary = new BMap.Boundary();
+		bdary.get(addressName, function(rs){       //获取行政区域
+			var count = rs.boundaries.length; //行政区域的点有多少个
+			if (count === 0) {
+				alert('未能获取当前输入行政区域');
+				return ;
+			}
+          	var pointArray = [];
+			for (var i = 0; i < count; i++) {
+				var ply = new BMap.Polygon(rs.boundaries[i], {strokeWeight: 2, strokeColor: "#ff0000"}); //建立多边形覆盖物
+				map.addOverlay(ply);  //添加覆盖物
+				pointArray = pointArray.concat(ply.getPath());
+			}    
+			map.setViewport(pointArray);    //调整视野              
+		});   
+	};
+	
+	//
+	 function addMarkerByPeopleInfo(userSubName,major,address,longitude,latitude)
+    {
+    	var point = new BMap.Point(longitude,latitude);
+		var marker = new BMap.Marker(point);  // 创建标注
+		
+		map.addOverlay(marker);              // 将标注添加到地图中
+		map.centerAndZoom(point, 15);
+		var opts = {
+	  	width : 300,     // 信息窗口宽度
+	  	height: 120,     // 信息窗口高度
+	  	title : "校友信息" // 信息窗口标题
+		};
+		var infoWindow = new BMap.InfoWindow("校友名:<strong>"+userSubName+"</strong></br>"+"专业:<strong>"+major+"</strong></br>地址:<strong>"+address+"</strong>", opts);  // 创建信息窗口对象 
+		marker.addEventListener("click", function(){          
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+		});
+    }
+});    
+</script>
+</body>
+
+</html>

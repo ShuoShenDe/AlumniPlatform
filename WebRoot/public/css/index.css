@@ -1,0 +1,148 @@
+#topHeader{
+    width:100%;
+    height:50px;
+    background-color: #888888;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+}
+#topHeader img:hover{
+    cursor: pointer;
+}
+#content {
+    margin: 0 0;
+    height: 100%;
+    top:50px;
+}
+.ahover{
+    top: 50px;
+    position: fixed;
+    z-index: 100;
+}
+#allmap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin:0;
+    font-family:"微软雅黑";
+    top:50px;
+}
+.navTool{
+    position: absolute;
+    top: 30px;
+    width: 40%;
+    height: 80px;
+    left: 50%;
+    /*background-color: lightblue;*/
+}
+.navTool_style{
+    width: 80px;
+    height: 80px;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+.navTool_style p{
+    float: left;
+    margin: 0px;
+    margin-top: 6px;
+    font-family:"宋体";
+}
+.navTool_img_style{
+    width: 60px;
+    height: 60px;
+    float: left;
+    box-shadow: 8px 6px 6px #888888;
+    -moz-border-radius:10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    background-color: #f4f4f4;
+}
+.navTool_img_style:hover{
+    background-color: rgb(229,233,239);
+    cursor: pointer;
+}
+.people_info{
+    height: auto;
+    position:absolute;
+    right: 20px;
+    top: 0px;
+    z-index: 100;
+    width: 140px;
+}
+.people_info_style{
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    background-color: rgb(229,233,239);
+    -moz-border-radius:25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+}
+
+.people_info_style img{
+    width: 50px;
+    height: 50px;
+
+}
+.people_info_style:hover{
+    cursor: pointer;
+    background-color: white;
+}
+.people_xx_info{
+    display: none;
+    width: 140px;
+    height: 200px;
+    background-color: antiquewhite;
+    -moz-border-radius:10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px #888888;
+}
+.people_xx_info a{
+	color:blue;
+}
+.people_xx_info a:hover{
+	color:red;
+	cursor:pointer;
+}
+.people_loginandregister{
+    position:absolute;
+    right: 20px;
+    top: 0px;
+    z-index: 100;
+    width: 140px;
+    text-decoration: none;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+}
+.people_loginandregister .login{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+.people_loginandregister .login a{
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+}
+.people_loginandregister .login:hover{
+    background-color: bisque;
+}
+.people_loginandregister .register{
+    margin-left:5px;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+.people_loginandregister .register:hover{
+    background-color: bisque;
+}
+.people_loginandregister .xiexian{
+    line-height: 50px;
+    width: 2px;
+    float: left;
+}

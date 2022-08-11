@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/login.css" />
+<link rel="stylesheet" type="text/css" href="css/register.css">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<script type="application/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="application/javascript" src="js/bootstrap.min.js"></script>
+<script type="application/javascript" src="js/distpicker.data.min.js"></script>
+<script type="application/javascript" src="js/distpicker.min.js"></script>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=58OTPDKo3sklnph55tzHgEVQHLRxGke0"></script>
+<script type="application/javascript" src="js/register.js"></script>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>云南大学校友平台</title>
+</head>
+<body ng-app="myapp">
+	<div id="topHeader" style="position: relative">
+		<img src="img/yunlogo.png" />
+	</div>
+	<div class="reg_mainContent">
+		<div class="login_style">
+			<div class="login_style_top">
+				<div class="login_style_top_img">
+					<img src="img/register.png">
+				</div>
+			</div>
+			<div class="register_style_content">
+				<form class="form-horizontal" role="form">
+					<div class="form-group has-feedback">
+						<label class="col-sm-2 control-label">用户名</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="usersubname"
+								placeholder="请输入你的系统登录名"> <span
+								class="glyphicon form-control-feedback" id="subnamespan"></span>
+							<label class="control-label sr-only" id="subnamelabelOK">该用户名可以注册</label>
+							<label class="control-label sr-only" id="subnamelabelERROR">该用户名已被注册</label>
+						</div>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="col-sm-2 control-label">用户真实姓名</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="username"
+								placeholder="请输入你的真实名字"> <span
+								class="glyphicon form-control-feedback" id="namespan"></span> <label
+								class="control-label sr-only" id="namelabelOK">合法的用户名</label> <label
+								class="control-label sr-only" id="namelabelERROR">用户名不能为空</label>
+						</div>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="col-sm-2 control-label">密码</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="password1"
+								placeholder="密码"> <span
+								class="glyphicon form-control-feedback" id="password1span"></span>
+							<label class="control-label sr-only" id="password1labelOK">合法密码</label>
+							<label class="control-label sr-only" id="password1labelERROR">密码不能为空(或是密码的长度不够，至少为6位数)</label>
+						</div>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="col-sm-2 control-label">再次输入密码</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="password2"
+								placeholder="再次输入密码"> <span
+								class="glyphicon form-control-feedback" id="password2span"></span>
+							<label class="control-label sr-only" id="password2labelOK">两次密码正确</label>
+							<label class="control-label sr-only" id="password2labelERROR">两次密码不正确</label>
+						</div>
+					</div>
+
+					<div class="form-group  has-feedback">
+						<label class="col-sm-2 control-label">性别</label>
+						<div class="col-sm-10">
+							<div class="radio col-sm-1">
+								<label> <input type="radio" name="sex" id="sexman"
+									value="1" checked>男
+								</label>
+							</div>
+							<div class="radio col-sm-1">
+								<label> <input type="radio" name="sex" id="sexwomen"
+									value="2">女
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group  has-feedback">
+						<label class="col-sm-2 control-label">毕业时间</label>
+						<div class="col-sm-10">
+							<select class="form-control" name="bytime" id="selectbytime">
+							</select>
+						</div>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="col-sm-2 control-label">专业</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="major"
+								placeholder="专业"> <span
+								class="glyphicon glyphicon-ok form-control-feedback"></span>
+						</div>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="col-sm-2 control-label">工作地址</label>
+						<div data-toggle="distpicker">
+							<div class="col-sm-3">
+								<select data-province="云南省" id="province" class="form-control"></select>
+							</div>
+							<div class="col-sm-3">
+								<select data-city="昆明市" id="city" class="form-control"></select>
+							</div>
+							<div class="col-sm-3">
+								<select data-district="呈贡区" id="county" class="form-control"></select>
+							</div>
+						</div>
+						<label for="username" class="col-sm-2"></label>
+						<div class="col-sm-10" style="margin-top: 10px">
+							<input type="text" class="form-control" id="address" value="百度" />
+						</div>
+						<div id="searchResultPanel"
+							style="border:1px solid #C0C0C0;height:auto; display:none;"></div>
+
+					</div>
+
+					<div class="form-group has-feedback">
+						<label class="col-sm-2 control-label">公司名称</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="factory"
+								placeholder="公司名称"> <span
+								class="glyphicon form-control-feedback" id="factoryspan"></span>
+							<label class="control-label sr-only" id="factorylabelOK">合法名称</label>
+							<label class="control-label sr-only" id="factorylabelERROR">请输入公司名称</label>
+						</div>
+					</div>
+					<div class="form-group  has-feedback">
+						<label class="col-sm-2 control-label">工作职位</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="post"
+								placeholder="工作职位"> <span
+								class="glyphicon form-control-feedback" id="postspan"></span> <label
+								class="control-label sr-only" id="postlabelOK">合法名称</label> <label
+								class="control-label sr-only" id="postlabelERROR">请输入职位名称</label>
+						</div>
+					</div>
+					<div class="form-group  has-feedback">
+						<label class="col-sm-2 control-label">联系电话（或手机）</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="telephone"
+								placeholder="联系电话"> <span
+								class="glyphicon form-control-feedback" id="telephonespan"></span>
+							<label class="control-label sr-only" id="telephonelabelOK">合法电话</label>
+							<label class="control-label sr-only" id="telephonelabelERROR">"请正确填写电话号码，例如:18487294025或0713-4816048"</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-4">
+							<button type="submit" class="btn btn-primary btn-block"
+								id="regSubmit">注册</button>
+						</div>
+						<div class="col-sm-offset-1 col-sm-4">
+							<button type="button" id="btnBackToLogin"
+								class="btn btn-default btn-block">返回登录</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer_content">
+			<p>Copyright © 2009 云南大学资源环境与地球科学学院 地址：云南大学呈贡校区，资源环境与地球科学学院</p>
+			<div class="lianxi_style">电话：0871-65033733 邮箱:645495161@qq.com
+			</div>
+		</div>
+
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="infoModal"
+		aria-labelledby="gridSystemModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="gridSystemModalLabel">提示信息</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<h4>添加成功</h4>
+					</div>
+
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+</body>
+<script type="text/javascript">
+	function G(id) {
+		return document.getElementById(id);
+	};
+	var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+	{
+		"input" : "address"
+	});
+	ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
+		var str = "";
+		var _value = e.fromitem.value;
+		var value = "";
+		if (e.fromitem.index > -1) {
+			value = _value.province + _value.city + _value.district
+					+ _value.street + _value.business;
+		}
+		str = "FromItem<br />index = " + e.fromitem.index + "<br />value = "
+				+ value;
+
+		value = "";
+		if (e.toitem.index > -1) {
+			_value = e.toitem.value;
+			value = _value.province + _value.city + _value.district
+					+ _value.street + _value.business;
+		}
+		str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = "
+				+ value;
+		G("searchResultPanel").innerHTML = str;
+	});
+	var myValue;
+	ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+		var _value = e.item.value;
+		myValue = _value.province + _value.city + _value.district
+				+ _value.street + _value.business;
+		G("searchResultPanel").innerHTML = "onconfirm<br />index = "
+				+ e.item.index + "<br />myValue = " + myValue;
+	});
+</script>
+</html>
